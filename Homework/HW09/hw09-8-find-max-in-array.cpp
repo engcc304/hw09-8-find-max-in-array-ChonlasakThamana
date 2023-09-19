@@ -40,4 +40,48 @@
     Output:
         Array: 6 7 11 13 15 49 27 18
         The large 3rd element = 18
-*/
+*/#include <stdio.h>
+
+int main() {
+    int n, i;
+    
+    // รับค่าจำนวนที่ต้องการสร้างอาเรย์
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    // รับค่าภายในอาเรย์
+    printf("Enter %d elements:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // เรียงลำดับอาเรย์ให้อยู่ในลำดับจากมากไปน้อย
+    for (i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] < arr[j]) {
+                // สลับค่า
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+
+    // แสดงอาเรย์ที่เรียงลำดับแล้ว
+    printf("Array: ");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // แสดงค่าที่มากเป็นอันดับสาม
+    if (n >= 3) {
+        printf("The 3rd largest element = %d\n", arr[2]);
+    } else {
+        printf("The array does not have a 3rd largest element.\n");
+    }
+
+    return 0;
+}
